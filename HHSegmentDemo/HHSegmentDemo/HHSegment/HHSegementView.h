@@ -23,6 +23,8 @@
 
 @property(nonatomic,strong)NSArray *titleArray;
 
+@property(nonatomic,assign)NSTimeInterval time;
+
 -(void)selectSegmentWithIndex:(NSInteger) index;
 
 

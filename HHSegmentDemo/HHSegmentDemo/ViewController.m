@@ -20,7 +20,8 @@
     
     
     HHSegementView *segementView = [[HHSegementView alloc] initWithFrame:CGRectMake(0, 64, [[UIScreen mainScreen] bounds].size.width, 44)];
-    segementView.titleArray = @[@"aaaaaaa",@"bbbbb"];
+    segementView.titleArray = @[@"选项一",@"选项二",@"选项三"];
+    segementView.time = 1;
     [self.view addSubview:segementView];
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.

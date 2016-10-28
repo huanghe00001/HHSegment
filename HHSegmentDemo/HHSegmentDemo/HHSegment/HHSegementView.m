@@ -162,6 +162,14 @@
     }
     
     CGFloat width = self.frame.size.width/_titleArray.count;
+    
+    NSTimeInterval time;
+    if(self.time){
+        time = self.time;
+    }
+    else{
+        time = 0.3;
+    }
 
     [CATransaction begin];
     [CATransaction setDisableActions:YES];
@@ -170,8 +178,10 @@
     
     
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
+    animation.fillMode=kCAFillModeForwards;
+    animation.removedOnCompletion = NO;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    animation.duration = 0.3; // 动画持续时间
+    animation.duration = time; // 动画持续时间
     CGPoint point = self.selectLine.layer.position;
     point.x =   self.selectTag *width + width/2;
     animation.toValue = [NSValue valueWithCGPoint:point]; // 终了帧
@@ -191,7 +201,9 @@
         
         CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-        animation.duration = 0.3; // 动画持续时间
+        animation.fillMode=kCAFillModeForwards;
+        animation.removedOnCompletion = NO;
+        animation.duration = time; // 动画持续时间
         CGPoint point = label.layer.mask.position;
         point.x =   (self.selectTag-i) *width + width/2;
         animation.toValue = [NSValue valueWithCGPoint:point]; // 终了帧
